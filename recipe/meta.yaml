@@ -14,7 +14,7 @@ source:
 build:
   number: 0
   # Not supported on win and osx
-  skip: True  # [win or osx]
+  skip: True  # [win]
   run_exports:
     - {{ pin_subpackage("gcab") }}
 
