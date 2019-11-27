@@ -7,6 +7,7 @@ cd build
 rm ../docs/reference/meson.build
 touch ../docs/reference/meson.build 
 
+meson configure -Dvapi=false
 meson --buildtype=release --prefix="$PREFIX" --backend=ninja -Dlibdir=lib ..
 ninja -j${CPU_COUNT}
 ninja install
