@@ -1,0 +1,15 @@
+--- libgcab/meson.build.orig	2020-05-05 17:48:35.000000000 +0200
++++ libgcab/meson.build	2020-05-05 17:47:58.000000000 +0200
+@@ -28,7 +28,11 @@
+ )
+ 
+ mapfile = 'libgcab.syms'
+-vflag = '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), mapfile)
++if host_machine.system() == 'darwin'
++  vflag = ''
++else
++  vflag = '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), mapfile)
++endif
+ libgcab = shared_library(
+   'gcab-1.0',
+   enums,
