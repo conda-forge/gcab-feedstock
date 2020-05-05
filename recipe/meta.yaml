@@ -8,10 +8,12 @@ package:
 source:
   url: http://ftp.acc.umu.se/pub/GNOME/sources/gcab/{{ version }}/gcab-{{ version }}.tar.xz
   sha256: 10304cc8f6b550cf9f53fb3cebfb529c49394e982ef7e66e3fca9776c60a68e7
+  patches:
+    - disable-linker-script.patch  # [osx]
 
 build:
-  number: 0
-  # Not supported on win and osx
+  number: 1
+  # Not supported on win
   skip: True  # [win]
   run_exports:
     - {{ pin_subpackage("gcab") }}
