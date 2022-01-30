@@ -24,6 +24,7 @@ requirements:
     - ninja
     - meson
     - pkg-config
+    - glib  # [build_platform != target_platform]
   host:
     - gobject-introspection
     - glib
@@ -46,3 +47,4 @@ about:
 extra:
   recipe-maintainers:
     - isuruf
+    - xhochy
