@@ -1,5 +1,5 @@
 {% set name = "gcab" %}
-{% set version = "1.5" %}
+{% set version = "1.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: http://ftp.acc.umu.se/pub/GNOME/sources/gcab/{{ version }}/gcab-{{ version }}.tar.xz
-  sha256: 46bf7442491faa4148242b9ec2a0786a5f6e9effb1b0566e5290e8cc86f00f0c
+  sha256: 2f0c9615577c4126909e251f9de0626c3ee7a152376c15b5544df10fc87e560b
   patches:
     - 0001-Omit-git-version-retrieval.patch
     - disable-linker-script.patch  # [osx]
