@@ -1,0 +1,21 @@
+From a0de7a46d6e9265c7c4d9b4b4aa3c5c92003cbf8 Mon Sep 17 00:00:00 2001
+From: Uwe Korn <uwelk@xhochy.com>
+Date: Mon, 19 Feb 2024 06:24:49 +0000
+Subject: [PATCH] Explicitly specify gir dir
+
+---
+ libgcab/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libgcab/meson.build b/libgcab/meson.build
+index 26c98f7..1fd0397 100644
+--- a/libgcab/meson.build
++++ b/libgcab/meson.build
+@@ -105,6 +105,7 @@ if get_option('introspection')
+   if get_option('vapi')
+     gnome.generate_vapi('libgcab-1.0',
+       sources: gir[0],
++      gir_dirs: [get_option('prefix') / 'share' / 'gir-1.0'],
+       packages : ['gio-2.0'],
+       install : true,
+     )
