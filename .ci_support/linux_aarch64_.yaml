@@ -19,4 +19,4 @@ glib:
 target_platform:
 - linux-aarch64
 zlib:
-- '1.2'
+- '1'

@@ -15,4 +15,4 @@ glib:
 target_platform:
 - linux-64
 zlib:
-- '1.2'
+- '1'
