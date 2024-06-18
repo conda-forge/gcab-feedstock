@@ -12,7 +12,7 @@ source:
     - 0001-Explicitly-specify-gir-dir.patch
 
 build:
-  number: 0
+  number: 1
   # Not supported on win
   skip: true  # [win]
   run_exports:
@@ -20,16 +20,18 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - ninja
     - meson
     - pkg-config
     - vala
+    - gettext-tools
     - glib  # [build_platform != target_platform]
   host:
     - gobject-introspection
-    - gettext
     - glib
+    - linintl-devel  # [not linux]
     - zlib
 
 test:
