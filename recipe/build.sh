@@ -33,7 +33,6 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
     export GIO_MODULE_DIR=$BUILD_PREFIX/lib/gio/modules
 
     meson setup native-build \
-        "${meson_config_args[@]}" \
         --buildtype=release \
         --prefix=$BUILD_PREFIX \
         -Dlibdir=lib \
