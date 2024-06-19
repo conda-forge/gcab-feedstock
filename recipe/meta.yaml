@@ -33,7 +33,7 @@ requirements:
   host:
     - glib
     - libgirepository
-    - linintl-devel  # [not linux]
+    - libintl-devel  # [not linux]
     - zlib
 
 test:
