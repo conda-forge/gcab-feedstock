@@ -1,14 +1,14 @@
 #!/bin/bash
 
-set -euo pipefail
-
-mkdir -p build
-cd build
+set -euxo pipefail
 
 # need gtkdoc-scan for doc buildin
-rm ../docs/reference/meson.build
-touch ../docs/reference/meson.build 
+rm docs/reference/meson.build
+touch docs/reference/meson.build
 
+# necessary to ensure the gobject-introspection-1.0 pkg-config file gets found
+# meson needs this to determine where the g-ir-scanner script is located
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig
 export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
@@ -59,6 +59,9 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" == "1" && "${target_platform}" == lin
     sed -i "/^RTLDLIST/s,/lib/,${CONDA_BUILD_SYSROOT}/lib/," ${BUILD_PREFIX}/bin/ldd
     sed -i "/^RTLDLIST/s,/lib64/,${CONDA_BUILD_SYSROOT}/lib64/," ${BUILD_PREFIX}/bin/ldd
 fi
+
+mkdir -p build
+cd build
 
 meson ${MESON_ARGS:-} -Dintrospection=true --buildtype=release --prefix="$PREFIX" --backend=ninja -Dlibdir=lib -Dvapi=true ..
 ninja

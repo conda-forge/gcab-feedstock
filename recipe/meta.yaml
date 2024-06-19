@@ -27,10 +27,12 @@ requirements:
     - pkg-config
     - vala
     - gettext-tools
-    - glib  # [build_platform != target_platform]
-  host:
     - gobject-introspection
+    - glib  # [build_platform != target_platform]
+    - zlib  # [build_platform != target_platform]
+  host:
     - glib
+    - libgirepository
     - linintl-devel  # [not linux]
     - zlib
 
